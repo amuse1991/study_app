@@ -41,3 +41,8 @@
 - github : https://github.com/amuse1991/study_app
 - freedcamp : https://freedcamp.com/_5wJ/_gOu/todos
 - kakao oven : https://ovenapp.io/project/TkhvaoIDO7WsbqC9TIMmaBy3CadTGY5I#4UkQe
+
+## git 사용시 유의사항
+- 가급적 pull 후 작업해 주세요.
+- 개발 작업은 'develop_닉네임' 브랜치 생성 후 진행해 주세요.
+- 충돌 방지를 위해 자신이 담당하는 역할 외의 파일 수정을 자제해 주세요.
