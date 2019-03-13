@@ -294,3 +294,6 @@ buck-out/
 .fakebuckversion
 
 # End of https://www.gitignore.io/api/reactnative
+
+## assets
+client/src/assets/
