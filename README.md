@@ -1,18 +1,13 @@
-# 스터디 웹 어플리케이션(가제)
+# Study Time 어플리케이션
 
 ## 프로젝트 주제
-- 시간표 단위로 스터디를 개설하고, 참여할 수 있는 웹 어플리케이션 개발
-- 과제 수행률에 따라 포인트를 획득하고, 포인트에 따른 랭크를 확인할 수 있는 기능을 포함한다.
-
-## 팀원 구성 및 역할 분담
-- 신윤호
-- 이재경
-- (추가)
+- 시간표 단위로 스터디를 개설하고, 참여할 수 있는 어플리케이션 개발
+- 과제 수행률에 따라 포인트를 획득하고 포인트에 따른 랭크를 확인할 수 있는 기능을 포함한다.
 
 ## 프로젝트 구성
-- FE : React.js 16.8
+- FE : React native
 - BE : Spring web MVC 4.3 (with Java configuration and Annotation)
-- DB : Oracle DB(AWS RDB), Hibernate(https://victorydntmd.tistory.com/195)
+- DB : MySQL(AWS RDB), Hibernate, MyBatis
 - Server : Ubuntu 16.04(AWS EC2)
 
 ## 프로젝트 목표
@@ -21,9 +16,8 @@
   - spring web mvc 프레임워크 활용
   - REST API 서버 구축
   - TDD 방식의 개발
-  - AWS RDB, ORM을 이용한 DB 활용
+  - ORM을 이용한 DB 활용
   - 배포 환경 구축 및 CI/CD 파이프라인 구축
-  - git, freedcamp를 활용한 협업
 
 ## 프로젝트 기간별 목표
 - 2019.03
@@ -39,10 +33,7 @@
 
 ## 관련 링크
 - github : https://github.com/amuse1991/study_app
+- swaggerhub : https://app.swaggerhub.com/apis/amuse1991/study_time_api/1.0.2
 - freedcamp : https://freedcamp.com/_5wJ/_gOu/todos
 - kakao oven : https://ovenapp.io/project/TkhvaoIDO7WsbqC9TIMmaBy3CadTGY5I#4UkQe
 
-## git 사용시 유의사항
-- 가급적 pull 후 작업해 주세요.
-- 개발 작업은 'develop_닉네임' 브랜치 생성 후 진행해 주세요.
-- 충돌 방지를 위해 자신이 담당하는 역할 외의 파일 수정을 자제해 주세요.
