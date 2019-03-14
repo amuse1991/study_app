@@ -3,16 +3,16 @@
 
 import React,{Component} from "React";
 import { StyleSheet, Text, View } from 'react-native';
+import {Container} from 'native-base'
 import Login from "./screens/login/Login";
 
 export default class StudyApp extends Component{
 
     render(){
         return(
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your study app!</Text>
+            <Container>
                 <Login/>
-            </View>
+            </Container>
         )
         
     }
