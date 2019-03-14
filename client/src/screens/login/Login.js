@@ -28,7 +28,7 @@ export default class Login extends Component{
         return (
             <Content style={{backgroundColor:"black"}}>
                 <View style={loginScreenStyles.container}>
-                    <Text style={loginScreenStyles.title}>tttt</Text>
+                    <Text style={loginScreenStyles.title}>Study Time</Text>
                     
                 </View>
                 <Form>
@@ -38,7 +38,7 @@ export default class Login extends Component{
                     <Item last>
                         <Input placeholder="Password" />
                     </Item>
-                    <Button block dark>
+                    <Button block dark onPress={()=>{alert("pressed")}}>
                         <Text style={buttonStyle.text_white}>로그인</Text>
                     </Button>
                     <Button block dark>
