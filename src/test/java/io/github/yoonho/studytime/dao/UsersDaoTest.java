@@ -1,7 +1,7 @@
 package io.github.yoonho.studytime.dao;
 
-import io.github.yoonho.studytime.dto.Users;
-import io.github.yoonho.studytime.dto.UsersRepository;
+import io.github.yoonho.studytime.entity.Users;
+import io.github.yoonho.studytime.entity.UsersRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
