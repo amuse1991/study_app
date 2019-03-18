@@ -2,15 +2,11 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="study_app" />
-      </profile>
+      <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="study_app" target="1.8" />
+      <module name="io.github.yoonho.studytime.main" target="1.8" />
+      <module name="io.github.yoonho.studytime.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
