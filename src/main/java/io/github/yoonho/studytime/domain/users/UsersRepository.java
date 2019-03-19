@@ -1,4 +1,4 @@
-package io.github.yoonho.studytime.entity;
+package io.github.yoonho.studytime.domain.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,6 +1,6 @@
 package io.github.yoonho.studytime.dto;
 
-import io.github.yoonho.studytime.entity.Users;
+import io.github.yoonho.studytime.domain.users.Users;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

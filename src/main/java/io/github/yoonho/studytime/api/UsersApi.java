@@ -1,7 +1,7 @@
 package io.github.yoonho.studytime.api;
 
 import io.github.yoonho.studytime.dto.SignUpRequestDto;
-import io.github.yoonho.studytime.entity.UsersRepository;
+import io.github.yoonho.studytime.domain.users.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
