@@ -1,5 +1,8 @@
 package io.github.yoonho.studytime.service;
 
-public interface UsersService {
+import io.github.yoonho.studytime.dto.users.SignUpRequestDto;
+import io.github.yoonho.studytime.dto.users.UserInfoResponseDto;
 
+public interface UsersService {
+    String signUp(SignUpRequestDto form);
 }

@@ -1,6 +1,7 @@
 package io.github.yoonho.studytime.domain.study;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +21,7 @@ public class Study {
     private String name;
 
     @Column(nullable = false)
-    private Date study_date;
+    private Date day_of_week;
 
     @Column(nullable = false)
     private Date time;
@@ -30,7 +31,17 @@ public class Study {
 
     @Column(columnDefinition = "TEXT")
     private String description;
-    private Long study_type_id;
-    private Long attendance_configure_id;
 
+    @Column(columnDefinition = "default 0")
+    private Integer enable_attendance_check;
+
+    @Builder
+    public Study(String name, Date day_of_week, Date time, Integer test_point, String description, Integer enable_attendance_check){
+        this.name = name;
+        this.day_of_week = day_of_week;
+        this.time = time;
+        this.test_point = test_point;
+        this.description = description;
+        this.enable_attendance_check = enable_attendance_check;
+    }
 }
