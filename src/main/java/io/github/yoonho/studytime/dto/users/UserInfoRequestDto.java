@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SignUpRequestDto {
+public class UserInfoRequestDto {
     private String user_id;
     private String password;
     private String nickname;
@@ -18,7 +18,7 @@ public class SignUpRequestDto {
 
     public Users toEntity(){
         return Users.builder()
-                .user_id(user_id)
+                .userId(user_id)
                 .password(password)
                 .nickname(nickname)
                 .phone(phone)

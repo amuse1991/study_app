@@ -4,13 +4,15 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
 @Getter
+@Entity
+@DynamicUpdate
 @Table(name = "authority")
 public class Authority {
     @Id

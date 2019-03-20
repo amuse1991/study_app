@@ -1,6 +1,7 @@
 package io.github.yoonho.studytime.domain.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -8,7 +9,8 @@ import org.springframework.data.repository.query.Param;
 public interface UsersRepository extends JpaRepository<Users,Long> {
     //JpaRepository<Entity클래스,PK타입>
     //기본적인 CRUD 메소드 자동 생성
-    @Query("select case when count(user_id)>0 then true else false end " +
-            "from Users u where user_id = :userId")
-    boolean existsByUserId(@Param("userId") String userId);
+
+    boolean existsByUserId(String userId);
+    void deleteUsersByUserId(String userId);
+    Users findUsersByUserId(String userId);
 }

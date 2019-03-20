@@ -17,7 +17,7 @@ public class UserInfoResponseDto {
 
     public Users toEntity(){
         return Users.builder()
-                .user_id(user_id)
+                .userId(user_id)
                 .nickname(nickname)
                 .phone(phone)
                 .point(point)
