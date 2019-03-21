@@ -19,6 +19,8 @@ public class UsersApi {
     //private UsersRepository usersRepository; //@AllArgsConstructor에 의해 생성자 주입되므로 @Autowired안붙인다.
     private UsersServiceImpl usersService;
 
+    //root
+
     @PostMapping("/users") //유저 생성
     public String signUp(@RequestBody UserInsertReqDto form){
         return usersService.signUp(form);
@@ -26,35 +28,32 @@ public class UsersApi {
 
     @GetMapping("/users") //모든 유저 조회
     public List<UserInfoResDto> getAllUsers(){
-        //TODO: API작성
-        return null;
+        return usersService.getAllUsers();
     }
+
+    // single item
 
     @GetMapping("/users/{userId}") //userId 값과 일치하는 유저 조회
     public UserInfoResDto getUserByUserId(@PathVariable String userId){
-        //TODO : API작성
-        return null;
+        return usersService.getUserByUserId(userId);
     }
 
     @PutMapping("/users/{userId}") //유저 정보 수정
     public UserInfoResDto updateUser(@PathVariable String userId,
                                      @RequestBody UserInsertReqDto form){
-        //TODO: userId 이용하도록 수정
         return usersService.updateUser(userId,form);
     }
 
     @PutMapping("/users/{userId}/point") //유저가 가진 포인트 수정
     public UserInfoResDto updateUserPoint(@PathVariable String userId,
                                    @RequestParam(value = "value") int value){
-        //TODO: API작성
-        return null;
+        return usersService.updateUserPoint(userId,value);
     }
 
     @PutMapping("/users/{userId}/authority") //유저가 가진 권한 수정
     public UserAuthDto updateUserAuth(@PathVariable String userId,
                                       @RequestParam(value = "auth") AuthorityName auth){
-        //TODO: API작성
-        return null;
+        return usersService.updateUserAuth(userId, auth);
     }
 
     @DeleteMapping("/users/{userId}") //유저 삭제

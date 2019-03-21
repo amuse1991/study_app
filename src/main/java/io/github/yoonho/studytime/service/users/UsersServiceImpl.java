@@ -5,8 +5,9 @@ import io.github.yoonho.studytime.domain.users.UsersRepository;
 import io.github.yoonho.studytime.dto.users.UserAuthDto;
 import io.github.yoonho.studytime.dto.users.UserInfoResDto;
 import io.github.yoonho.studytime.dto.users.UserInsertReqDto;
+
 import io.github.yoonho.studytime.exceptions.users.IdAlreadyExistingException;
-import io.github.yoonho.studytime.exceptions.users.UserNotFoundedException;
+import io.github.yoonho.studytime.exceptions.users.UserNotFoundException;
 import io.github.yoonho.studytime.utils.AuthorityName;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class UsersServiceImpl implements UsersService {
         Users newUser = form.toEntity();
         //아이디 중복 체크
         if(usersRepository.existsByUserId(newUser.getUserId())){
-            throw new IdAlreadyExistingException();
+            throw new IdAlreadyExistingException(newUser.getUserId());
         }
         usersRepository.save(newUser);
         return newUser.getUserId();
@@ -34,6 +35,11 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public List<UserInfoResDto> getAllUsers() {
+        //TODO:구현
+        /*
+        모든 유저를 반환할 필요 있음??
+        유저 검색 기능으로 바꾸는게 좋을듯
+         */
         return null;
     }
 
@@ -49,7 +55,7 @@ public class UsersServiceImpl implements UsersService {
 
         //유저가 존재하는지 확인
         if(!usersRepository.existsByUserId(updateData.getUserId())){
-            throw new UserNotFoundedException();
+            throw new UserNotFoundException(updateData.getUserId());
         }
 
         String password = updateData.getPassword();
@@ -93,7 +99,7 @@ public class UsersServiceImpl implements UsersService {
 
         // 유저가 존재하는지 확인
         if(!usersRepository.existsByUserId(id)){
-            throw new UserNotFoundedException();
+            throw new UserNotFoundException(id);
         }
         // 유저 삭제
         usersRepository.deleteUsersByUserId(id);
