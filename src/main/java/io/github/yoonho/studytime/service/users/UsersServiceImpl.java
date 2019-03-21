@@ -10,6 +10,7 @@ import io.github.yoonho.studytime.exceptions.users.IdAlreadyExistingException;
 import io.github.yoonho.studytime.exceptions.users.UserNotFoundException;
 import io.github.yoonho.studytime.utils.AuthorityName;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +46,18 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public UserInfoResDto getUserByUserId(String userId) {
-        return null;
+        Users exampleUser = Users.builder().userId(userId).build(); //query by example
+        Users user = usersRepository.findOne(Example.of(exampleUser))
+                .orElseThrow(()->new UserNotFoundException(userId)); //user id에 해당하는 유저가 존재하지 않을 경우
+        UserInfoResDto result = new UserInfoResDto();
+
+        result.setUserId(user.getUserId());
+        result.setNickname(user.getNickname());
+        result.setPhone(user.getNickname());
+        result.setPoint(user.getPoint());
+        result.setAuthority(user.getAuthority());
+
+        return result;
     }
 
     @Override

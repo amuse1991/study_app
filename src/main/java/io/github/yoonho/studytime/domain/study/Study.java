@@ -48,4 +48,17 @@ public class Study {
         this.description = description;
         this.enableAttendanceCheck = enableAttendanceCheck;
     }
+
+    @Override
+    public String toString() {
+        return "Study{" +
+                "studyId=" + studyId +
+                ", name='" + name + '\'' +
+                ", dayOfWeek=" + dayOfWeek +
+                ", time=" + time +
+                ", testPoint=" + testPoint +
+                ", description='" + description + '\'' +
+                ", enableAttendanceCheck=" + enableAttendanceCheck +
+                '}';
+    }
 }

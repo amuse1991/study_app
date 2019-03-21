@@ -44,4 +44,17 @@ public class Users {
         this.phone = phone;
         this.authority = authority;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "userKey=" + userKey +
+                ", userId='" + userId + '\'' +
+                ", password='" + password + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", point=" + point +
+                ", authority=" + authority +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

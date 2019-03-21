@@ -18,4 +18,5 @@ public class UserAuthDto {
                 .authority(authority)
                 .build();
     }
+
 }
