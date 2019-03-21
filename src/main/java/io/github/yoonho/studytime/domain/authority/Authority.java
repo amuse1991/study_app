@@ -1,5 +1,6 @@
 package io.github.yoonho.studytime.domain.authority;
 
+import io.github.yoonho.studytime.utils.AuthorityName;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,11 +17,12 @@ import javax.persistence.*;
 @Table(name = "authority")
 public class Authority {
     @Id
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private AuthorityName name;
     private String description;
 
     @Builder
-    public Authority(String name, String description){
+    public Authority(AuthorityName name, String description){
         this.name = name;
         this.description = description;
     }

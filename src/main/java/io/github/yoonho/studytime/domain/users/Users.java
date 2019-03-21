@@ -1,5 +1,6 @@
 package io.github.yoonho.studytime.domain.users;
 
+import io.github.yoonho.studytime.utils.AuthorityName;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -30,11 +31,12 @@ public class Users {
     private Integer point;
 
     @Column(columnDefinition = "default user")
-    private String authority;
+    @Enumerated(EnumType.STRING)
+    private AuthorityName authority;
     private String phone;
 
     @Builder
-    public Users(String userId, String password, String nickname, Integer point, String phone, String authority){
+    public Users(String userId, String password, String nickname, Integer point, String phone, AuthorityName authority){
         this.userId = userId;
         this.password = password;
         this.nickname = nickname;

@@ -38,4 +38,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // rest-assured
+    testCompile 'io.rest-assured:rest-assured:3.3.0'
+    testCompile 'io.rest-assured:json-schema-validator:3.3.0'
 }

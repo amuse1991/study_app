@@ -2,13 +2,17 @@ package io.github.yoonho.studytime.service.users;
 
 import io.github.yoonho.studytime.domain.users.Users;
 import io.github.yoonho.studytime.domain.users.UsersRepository;
-import io.github.yoonho.studytime.dto.users.UserInfoRequestDto;
-import io.github.yoonho.studytime.dto.users.UserInfoResponseDto;
+import io.github.yoonho.studytime.dto.users.UserAuthDto;
+import io.github.yoonho.studytime.dto.users.UserInfoResDto;
+import io.github.yoonho.studytime.dto.users.UserInsertReqDto;
 import io.github.yoonho.studytime.exceptions.users.IdAlreadyExistingException;
 import io.github.yoonho.studytime.exceptions.users.UserNotFoundedException;
+import io.github.yoonho.studytime.utils.AuthorityName;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Transactional
@@ -18,7 +22,7 @@ public class UsersServiceImpl implements UsersService {
     private UsersRepository usersRepository;
 
     @Override
-    public String signUp(UserInfoRequestDto form) {
+    public String signUp(UserInsertReqDto form) {
         Users newUser = form.toEntity();
         //아이디 중복 체크
         if(usersRepository.existsByUserId(newUser.getUserId())){
@@ -29,7 +33,17 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public UserInfoResponseDto updateUser(UserInfoRequestDto form) {
+    public List<UserInfoResDto> getAllUsers() {
+        return null;
+    }
+
+    @Override
+    public UserInfoResDto getUserByUserId(String userId) {
+        return null;
+    }
+
+    @Override
+    public UserInfoResDto updateUser(String userId, UserInsertReqDto form) {
         Users updateData = form.toEntity();
         //TODO : 권한 확인
 
@@ -38,11 +52,10 @@ public class UsersServiceImpl implements UsersService {
             throw new UserNotFoundedException();
         }
 
-        String userId = updateData.getUserId();
         String password = updateData.getPassword();
         String nickname = updateData.getNickname();
         Integer point = updateData.getPoint();
-        String auth = updateData.getAuthority();
+        AuthorityName auth = updateData.getAuthority();
         String phone = updateData.getPhone();
 
         // 변경사항 object에 적용
@@ -55,13 +68,23 @@ public class UsersServiceImpl implements UsersService {
         // 변경사항 DB에 적용
         usersRepository.save(user);
 
-        UserInfoResponseDto response = new UserInfoResponseDto();
-        response.setUser_id(user.getUserId());
+        UserInfoResDto response = new UserInfoResDto();
+        response.setUserId(user.getUserId());
         response.setNickname(user.getNickname());
         response.setAuthority(user.getAuthority());
         response.setPhone(user.getPhone());
 
         return response;
+    }
+
+    @Override
+    public UserInfoResDto updateUserPoint(String userId, int value) {
+        return null;
+    }
+
+    @Override
+    public UserAuthDto updateUserAuth(String userId, AuthorityName auth) {
+        return null;
     }
 
     @Override
