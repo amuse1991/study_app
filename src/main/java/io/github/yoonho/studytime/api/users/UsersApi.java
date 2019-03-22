@@ -7,7 +7,9 @@ import io.github.yoonho.studytime.dto.users.UserPointDto;
 import io.github.yoonho.studytime.service.users.UsersServiceImpl;
 import io.github.yoonho.studytime.utils.types.AuthorityName;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

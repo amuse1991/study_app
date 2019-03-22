@@ -2,6 +2,7 @@ package io.github.yoonho.studytime.dao;
 
 import io.github.yoonho.studytime.domain.users.Users;
 import io.github.yoonho.studytime.domain.users.UsersRepository;
+import io.github.yoonho.studytime.utils.types.AuthorityName;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +40,7 @@ public class UsersDaoTest {
                 .nickname("테스터")
                 .phone("010-1111-2222")
                 .point(0)
-                .authority("user")
+                .authority(AuthorityName.user)
                 .build()
         );
 
@@ -61,7 +62,7 @@ public class UsersDaoTest {
                 .nickname("테스터")
                 .phone("010-1111-2222")
                 .point(0)
-                .authority("user")
+                .authority(AuthorityName.user)
                 .build()
         );
         String id = "estrlla917@naver.com";
@@ -83,7 +84,7 @@ public class UsersDaoTest {
                 .nickname("테스터")
                 .phone("010-1111-2222")
                 .point(0)
-                .authority("user")
+                .authority(AuthorityName.user)
                 .build()
         );
 
@@ -93,7 +94,7 @@ public class UsersDaoTest {
                 .nickname("테스터2")
                 .phone("010-1111-3333")
                 .point(0)
-                .authority("user")
+                .authority(AuthorityName.user)
                 .build();
 
         //when
