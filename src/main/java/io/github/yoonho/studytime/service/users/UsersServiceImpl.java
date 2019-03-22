@@ -6,6 +6,7 @@ import io.github.yoonho.studytime.dto.users.UserAuthDto;
 import io.github.yoonho.studytime.dto.users.UserInfoResDto;
 import io.github.yoonho.studytime.dto.users.UserInsertReqDto;
 
+import io.github.yoonho.studytime.dto.users.UserPointDto;
 import io.github.yoonho.studytime.exceptions.users.IdAlreadyExistingException;
 import io.github.yoonho.studytime.exceptions.users.UserNotFoundException;
 import io.github.yoonho.studytime.utils.types.AuthorityName;
@@ -24,7 +25,7 @@ public class UsersServiceImpl implements UsersService {
     private UsersRepository usersRepository;
 
     @Override
-    public String signUp(UserInsertReqDto form) {
+    public String createUser(UserInsertReqDto form) {
         String userId = form.getUserId();
         //아이디 중복 체크
         if(usersRepository.existsByUserId(userId)){
@@ -89,36 +90,54 @@ public class UsersServiceImpl implements UsersService {
         // 변경사항 DB에 적용
         usersRepository.save(user);
 
-        UserInfoResDto response = new UserInfoResDto();
-        response.setUserId(user.getUserId());
-        response.setNickname(user.getNickname());
-        response.setAuthority(user.getAuthority());
-        response.setPhone(user.getPhone());
+        UserInfoResDto result = new UserInfoResDto();
+        result.setUserId(user.getUserId());
+        result.setNickname(user.getNickname());
+        result.setAuthority(user.getAuthority());
+        result.setPhone(user.getPhone());
 
-        return response;
+        return result;
     }
 
     @Override
     public UserAuthDto updateUserAuth(String userId, AuthorityName auth) {
-        
-        return null;
+        Users user = usersRepository.findUsersByUserId(userId);
+        user.updateAuthority(auth);
+        usersRepository.save(user);
+
+        UserAuthDto result = new UserAuthDto();
+
+        result.setUserId(userId);
+        result.setAuthority(user.getAuthority());
+
+        return result;
     }
 
 
     @Override
-    public UserInfoResDto increasePoint(String userId, int value) {
+    public UserPointDto increasePoint(String userId, int value) {
         Users user = usersRepository.findUsersByUserId(userId);
         user.increasePoint(value);
         usersRepository.save(user);
-        return null;
+
+        UserPointDto result = new UserPointDto();
+        result.setUserId(userId);
+        result.setPoint(user.getPoint());
+
+        return result;
     }
 
     @Override
-    public UserInfoResDto decreasePoint(String userId, int value) {
+    public UserPointDto decreasePoint(String userId, int value) {
         Users user = usersRepository.findUsersByUserId(userId);
         user.decreasePoint(value);
         usersRepository.save(user);
-        return null;
+
+        UserPointDto result = new UserPointDto();
+        result.setUserId(userId);
+        result.setPoint(user.getPoint());
+
+        return result;
     }
 
 

@@ -3,6 +3,7 @@ package io.github.yoonho.studytime.api.users;
 import io.github.yoonho.studytime.dto.users.UserAuthDto;
 import io.github.yoonho.studytime.dto.users.UserInfoResDto;
 import io.github.yoonho.studytime.dto.users.UserInsertReqDto;
+import io.github.yoonho.studytime.dto.users.UserPointDto;
 import io.github.yoonho.studytime.service.users.UsersServiceImpl;
 import io.github.yoonho.studytime.utils.types.AuthorityName;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class UsersApi {
 
     @PostMapping("/users") //유저 생성
     public String signUp(@RequestBody UserInsertReqDto form){
-        return usersService.signUp(form);
+        return usersService.createUser(form);
     }
 
     @GetMapping("/users") //모든 유저 조회
@@ -45,8 +46,8 @@ public class UsersApi {
     }
 
     @PutMapping("/users/{userId}/point") //유저에게 포인트 추가
-    public UserInfoResDto updateUserPoint(@PathVariable String userId,
-                                   @RequestParam(value = "value") int value){
+    public UserPointDto updateUserPoint(@PathVariable String userId,
+                                        @RequestParam(value = "value") int value){
         return usersService.increasePoint(userId,value);
     }
 

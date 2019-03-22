@@ -7,5 +7,5 @@ import lombok.*;
 @AllArgsConstructor
 public class UserPointDto {
     private String userId;
-    private String point;
+    private Integer point;
 }
