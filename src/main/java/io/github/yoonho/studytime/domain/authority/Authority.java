@@ -1,24 +1,28 @@
 package io.github.yoonho.studytime.domain.authority;
 
+import io.github.yoonho.studytime.utils.types.AuthorityName;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
 @Getter
+@Entity
+@DynamicUpdate
 @Table(name = "authority")
 public class Authority {
     @Id
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private AuthorityName name;
     private String description;
 
     @Builder
-    public Authority(String name, String description){
+    public Authority(AuthorityName name, String description){
         this.name = name;
         this.description = description;
     }
