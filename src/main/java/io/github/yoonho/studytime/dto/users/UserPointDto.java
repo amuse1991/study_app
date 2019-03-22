@@ -1,12 +1,11 @@
 package io.github.yoonho.studytime.dto.users;
 
-import io.github.yoonho.studytime.utils.types.AuthorityName;
 import lombok.*;
 
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserAuthDto {
+public class UserPointDto {
     private String userId;
-    private AuthorityName authority;
+    private String point;
 }

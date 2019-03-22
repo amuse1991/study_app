@@ -3,7 +3,7 @@ package io.github.yoonho.studytime.service.users;
 import io.github.yoonho.studytime.dto.users.UserAuthDto;
 import io.github.yoonho.studytime.dto.users.UserInfoResDto;
 import io.github.yoonho.studytime.dto.users.UserInsertReqDto;
-import io.github.yoonho.studytime.utils.AuthorityName;
+import io.github.yoonho.studytime.utils.types.AuthorityName;
 
 import java.util.List;
 
@@ -15,8 +15,9 @@ public interface UsersService {
     UserInfoResDto getUserByUserId(String userId);
 
     UserInfoResDto updateUser(String userId, UserInsertReqDto form);
-    UserInfoResDto updateUserPoint(String userId, int value);
     UserAuthDto updateUserAuth(String userId, AuthorityName auth);
+    UserInfoResDto increasePoint(String userId, int value);
+    UserInfoResDto decreasePoint(String userId, int value);
 
     boolean destroyUser(String id);
 

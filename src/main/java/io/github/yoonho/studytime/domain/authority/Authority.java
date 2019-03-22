@@ -1,6 +1,6 @@
 package io.github.yoonho.studytime.domain.authority;
 
-import io.github.yoonho.studytime.utils.AuthorityName;
+import io.github.yoonho.studytime.utils.types.AuthorityName;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

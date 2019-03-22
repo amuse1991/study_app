@@ -1,13 +1,14 @@
 package io.github.yoonho.studytime.domain.users;
 
-import io.github.yoonho.studytime.utils.AuthorityName;
+import io.github.yoonho.studytime.exceptions.BelowDomainValueException;
+import io.github.yoonho.studytime.utils.types.AuthorityName;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // Entity 클래스를 프로젝트 코드상에서 기본생성자로 생성하는 것은 막되, JPA에서 Entity 클래스를 생성하는것은 허용하기 위해 추가
-@Getter @Setter
+@Getter
 @Entity
 @DynamicUpdate
 @Table(name = "users")
@@ -43,6 +44,35 @@ public class Users {
         this.point = point;
         this.phone = phone;
         this.authority = authority;
+    }
+
+    public void updatePassword(String password){
+        this.password = password;
+    }
+
+    public void updateNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void updatePhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void updateAuthority(AuthorityName authority) {
+        this.authority = authority;
+    }
+
+    public void increasePoint(int value){
+        this.point += value;
+    }
+
+    public void decreasePoint(int value) throws BelowDomainValueException{
+        int updatedPoint = this.point + value;
+        // 변경된 값이 0보다 작은 경우
+        if(updatedPoint<0){
+            throw new BelowDomainValueException(Integer.toString(value),Integer.toString(0));
+        }
+        this.point -= value;
     }
 
     @Override

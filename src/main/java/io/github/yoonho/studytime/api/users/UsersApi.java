@@ -4,7 +4,7 @@ import io.github.yoonho.studytime.dto.users.UserAuthDto;
 import io.github.yoonho.studytime.dto.users.UserInfoResDto;
 import io.github.yoonho.studytime.dto.users.UserInsertReqDto;
 import io.github.yoonho.studytime.service.users.UsersServiceImpl;
-import io.github.yoonho.studytime.utils.AuthorityName;
+import io.github.yoonho.studytime.utils.types.AuthorityName;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 public class UsersApi {
 
-    //private UsersRepository usersRepository; //@AllArgsConstructor에 의해 생성자 주입되므로 @Autowired안붙인다.
+    //@AllArgsConstructor에 의해 생성자 주입되므로 @Autowired안붙인다.
     private UsersServiceImpl usersService;
 
     //root
@@ -44,10 +44,10 @@ public class UsersApi {
         return usersService.updateUser(userId,form);
     }
 
-    @PutMapping("/users/{userId}/point") //유저가 가진 포인트 수정
+    @PutMapping("/users/{userId}/point") //유저에게 포인트 추가
     public UserInfoResDto updateUserPoint(@PathVariable String userId,
                                    @RequestParam(value = "value") int value){
-        return usersService.updateUserPoint(userId,value);
+        return usersService.increasePoint(userId,value);
     }
 
     @PutMapping("/users/{userId}/authority") //유저가 가진 권한 수정
