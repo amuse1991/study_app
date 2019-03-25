@@ -14,4 +14,5 @@ public interface UsersRepository extends JpaRepository<Users,Long>, QueryByExamp
     boolean existsByUserId(String userId);
     void deleteUsersByUserId(String userId);
     Users findUsersByUserId(String userId);
+
 }

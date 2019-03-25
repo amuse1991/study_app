@@ -1,4 +1,4 @@
-package io.github.yoonho.studytime.service;
+package io.github.yoonho.studytime.service.users;
 
 import io.github.yoonho.studytime.domain.users.Users;
 import io.github.yoonho.studytime.domain.users.UsersRepository;

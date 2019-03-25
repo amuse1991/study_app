@@ -1,4 +1,4 @@
-package io.github.yoonho.studytime.dao;
+package io.github.yoonho.studytime.domain.users;
 
 import io.github.yoonho.studytime.domain.users.Users;
 import io.github.yoonho.studytime.domain.users.UsersRepository;
@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -19,7 +18,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UsersDaoTest {
+public class UsersRepoTest {
 
     @Autowired
     UsersRepository usersRepository;

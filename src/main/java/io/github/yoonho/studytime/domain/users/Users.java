@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
+//로그램 내에 아무곳에서나 Entity 를 생성하지 않도록 lombok lib 에서 제공하는 @NoArgsConstructor 어노테이션에 access = AccessLevel.PROTECTED 속성을 정의
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // Entity 클래스를 프로젝트 코드상에서 기본생성자로 생성하는 것은 막되, JPA에서 Entity 클래스를 생성하는것은 허용하기 위해 추가
 @Getter
 @Entity
