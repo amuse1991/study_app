@@ -38,7 +38,8 @@ public class Users {
     private String phone;
 
     @Builder
-    public Users(String userId, String password, String nickname, Integer point, String phone, AuthorityName authority){
+    public Users(Long userKey, String userId, String password, String nickname, Integer point, String phone, AuthorityName authority){
+        this.userKey = userKey;
         this.userId = userId;
         this.password = password;
         this.nickname = nickname;

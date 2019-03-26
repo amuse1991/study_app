@@ -33,10 +33,10 @@ public class MembershipServiceImpl implements MembershipService{
 
     @Override
     public MembershipInfoDto createMembership(String userId, Long studyId, MemberAuthType authType) {
-        if(usersRepository.existsByUserId(userId)){
+        if(!usersRepository.existsByUserId(userId)){
             throw new UserNotFoundException(userId);
         }
-        if(studyRepository.existsById(studyId)){
+        if(!studyRepository.existsById(studyId)){
             throw new StudyNotFoundException(studyId);
         }
 

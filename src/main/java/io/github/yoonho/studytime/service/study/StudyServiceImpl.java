@@ -5,6 +5,7 @@ import io.github.yoonho.studytime.domain.study.Study;
 import io.github.yoonho.studytime.domain.study.StudyKeywords;
 import io.github.yoonho.studytime.domain.study.StudyKeywordsRepository;
 import io.github.yoonho.studytime.domain.study.StudyRepository;
+import io.github.yoonho.studytime.dto.study.StudyCreateReqDto;
 import io.github.yoonho.studytime.dto.study.StudyInfoDto;
 import io.github.yoonho.studytime.service.membership.MembershipService;
 import io.github.yoonho.studytime.service.membership.MembershipServiceImpl;
@@ -40,7 +41,15 @@ public class StudyServiceImpl implements StudyService {
     }
 
     @Override
-    public StudyInfoDto createStudy(String creatorId, List<String> keywords, String name, DayOfWeek dayOfWeek, Date time, String description, Boolean enableAttendance) {
+    public StudyInfoDto createStudy(StudyCreateReqDto reqForm) {
+        String creatorId = reqForm.getCreatorId();
+        List<String> keywords = reqForm.getKeywords();
+        String name = reqForm.getName();
+        DayOfWeek dayOfWeek = reqForm.getDayOfWeek();
+        Date time = reqForm.getTime();
+        String description = reqForm.getDescription();
+        Boolean enableAttendance = reqForm.getEnableAttendance();
+
         if(creatorId == null || name == null || dayOfWeek == null || time == null || enableAttendance == null){
             throw new IllegalArgumentException();
         }

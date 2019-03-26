@@ -4,6 +4,7 @@ import io.github.yoonho.studytime.domain.study.Study;
 import io.github.yoonho.studytime.domain.study.StudyKeywords;
 import io.github.yoonho.studytime.domain.study.StudyKeywordsRepository;
 import io.github.yoonho.studytime.domain.study.StudyRepository;
+import io.github.yoonho.studytime.dto.study.StudyCreateReqDto;
 import io.github.yoonho.studytime.utils.types.DayOfWeek;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -41,13 +42,7 @@ public class StudyServiceTest {
     @Autowired
     private StudyKeywordsRepository keywordsRepository;
 
-    private String creatorId;
-    private List<String> keywords;
-    private String name;
-    private DayOfWeek dayOfWeek;
-    private String description;
-    private Boolean enableAttendance ;
-    private Date time;
+    private StudyCreateReqDto studyCreateReq;
 
     @Before
     public void setUp(){
@@ -55,17 +50,17 @@ public class StudyServiceTest {
         Date time = new Date();
         dateFormat.format(time);
 
-        this.creatorId = "estrella917@naver.com";
-        this.keywords = new ArrayList<>();
-        this.name = "테스트 스터디";
-        this.dayOfWeek = DayOfWeek.sun;
-        this.description = "this is test";
-        this.enableAttendance = true;
-        this.time = time;
-
+        this.studyCreateReq = new StudyCreateReqDto();
+        this.studyCreateReq.setCreatorId("estrella917@naver.com");
+        this.studyCreateReq.setName("테스트 스터디");
+        this.studyCreateReq.setDayOfWeek(DayOfWeek.sun);
+        this.studyCreateReq.setDescription("this is test");
+        this.studyCreateReq.setEnableAttendance(true);
+        this.studyCreateReq.setTime(time);
+        ArrayList<String> keywords = new ArrayList<>();
         keywords.add("test keyword1");
         keywords.add("test keyword2");
-
+        this.studyCreateReq.setKeywords(keywords);
 
     }
 
@@ -75,7 +70,7 @@ public class StudyServiceTest {
         //given
 
         //when
-        studyService.createStudy(creatorId,keywords,name,dayOfWeek,time,description,enableAttendance);
+        studyService.createStudy(studyCreateReq);
 
         //then
         List<Study> studyList = studyRepository.findByName("테스트 스터디");
@@ -89,7 +84,7 @@ public class StudyServiceTest {
         //given
 
         //when
-        studyService.createStudy(creatorId,keywords,name,dayOfWeek,time,description,enableAttendance);
+        studyService.createStudy(studyCreateReq);
 
         //then
         Long studyId = studyRepository.findByName("테스트 스터디").get(0).getStudyId();
@@ -105,7 +100,7 @@ public class StudyServiceTest {
         //given
 
         //when
-        studyService.createStudy(creatorId,keywords,name,dayOfWeek,time,description,enableAttendance);
+        studyService.createStudy(studyCreateReq);
 
         //then
 
