@@ -1,11 +1,17 @@
 package io.github.yoonho.studytime.service.study;
 
+import io.github.yoonho.studytime.domain.membership.MemberAuth;
+import io.github.yoonho.studytime.domain.membership.MemberAuthRepository;
+import io.github.yoonho.studytime.domain.membership.MembershipRepository;
 import io.github.yoonho.studytime.domain.study.Study;
 import io.github.yoonho.studytime.domain.study.StudyKeywords;
 import io.github.yoonho.studytime.domain.study.StudyKeywordsRepository;
 import io.github.yoonho.studytime.domain.study.StudyRepository;
+import io.github.yoonho.studytime.domain.users.Users;
+import io.github.yoonho.studytime.domain.users.UsersRepository;
 import io.github.yoonho.studytime.dto.study.StudyCreateReqDto;
 import io.github.yoonho.studytime.utils.types.DayOfWeek;
+import io.github.yoonho.studytime.utils.types.MemberAuthType;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,16 +37,23 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.anyOf;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StudyServiceTest {
     @Autowired
-    private StudyService studyService;
+    private StudyServiceImpl studyService;
     @Autowired
     private StudyRepository studyRepository;
     @Autowired
     private StudyKeywordsRepository keywordsRepository;
+    @Autowired
+    private MembershipRepository membershipRepository;
+    @Autowired
+    private MemberAuthRepository memberAuthRepository;
+    @Autowired
+    private UsersRepository usersRepository;
 
     private StudyCreateReqDto studyCreateReq;
 
@@ -98,11 +111,12 @@ public class StudyServiceTest {
     @Transactional
     public void 스터디를_생성하면_생성한_유저에게_스터디관리자_권한이_부여된다(){
         //given
-
+        //TODO : 테스트 코드 작성
         //when
         studyService.createStudy(studyCreateReq);
-
         //then
-
+        Users user = usersRepository.findUsersByUserId(studyCreateReq.getCreatorId());
+        MemberAuth auth = memberAuthRepository.getAuthByUserKey(user.getUserKey());
+        assertThat(auth.getName(),is(MemberAuthType.manager.toString()));
     }
 }

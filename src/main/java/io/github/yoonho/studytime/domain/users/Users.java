@@ -29,12 +29,11 @@ public class Users {
     @Column(nullable = false)
     private String nickname;
 
-    @Column(columnDefinition = "default 0")
     private Integer point;
 
-    @Column(columnDefinition = "default user")
     @Enumerated(EnumType.STRING)
     private AuthorityName authority;
+
     private String phone;
 
     @Builder

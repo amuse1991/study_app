@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: set1 #기본 환경 선택(어플리케이션 실행시 파라미터로 넘어온 값이 없으면 이 값으로 실행)
+
+# --- 기준으로 공통 영역, 하단이 각 profile 설정 영역
+# 공통영역의 값은 각 profile환경에 동일한 설정이 있으면 무시되고, 없으면 공통영역의 설정값이 사용됨
+#local 환경
+---
+spring:
+  profiles: local
+  datasource:
+    data: classpath:data-h2.sql # 시작시 실행 script
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+
+# 운영 환경
+---
+spring:
+  profiles: set1
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/studytime?useUnicode=true&charaterEncoding=utf-8?&serverTimezone=UTC
+    username: "local_admin"
+    password: "01062581441"
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+
+  session:
+    jdbc:
+      initialize-schema: always
+
+server:
+  port: 8081
+
+---
+spring:
+  profiles: set2
+
+server:
+  port: 8082

@@ -9,6 +9,7 @@ import io.github.yoonho.studytime.dto.membership.MembershipInfoDto;
 import io.github.yoonho.studytime.service.membership.MembershipService;
 import io.github.yoonho.studytime.service.membership.MembershipServiceImpl;
 import io.github.yoonho.studytime.utils.types.MemberAuthType;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -38,7 +39,6 @@ public class MembershipServiceTest {
     private StudyRepository studyRepository;
     @MockBean(name="membershipRepository")
     private MembershipRepository membershipRepository;
-
 
     @Test
     public void createMembership_멤버쉽을_생성후_반환한다(){

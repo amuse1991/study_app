@@ -33,13 +33,13 @@ public class Study {
     @Column(nullable = false)
     private Date time;
 
-    @Column(name = "test_point",nullable = false, columnDefinition = "default 0")
+    @Column(name = "test_point",nullable = false)
     private Integer testPoint;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "enable_attendance_check",columnDefinition = "default 0")
+    @Column(name = "enable_attendance_check")
     private Boolean enableAttendance;
 
     @Builder
