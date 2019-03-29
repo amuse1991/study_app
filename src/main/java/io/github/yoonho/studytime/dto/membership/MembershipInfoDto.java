@@ -7,13 +7,15 @@ import lombok.Setter;
 public class MembershipInfoDto {
     private String userId;
     private Long studyId;
+    private String studyName;
     private String authName;
 
     @Override
     public String toString() {
         return "MembershipInfoDto{" +
                 "userId='" + userId + '\'' +
-                ", studyId='" + studyId + '\'' +
+                ", studyId=" + studyId +
+                ", studyName='" + studyName + '\'' +
                 ", authName='" + authName + '\'' +
                 '}';
     }

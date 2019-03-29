@@ -1,3 +1,6 @@
+#test 폴더는 classpath 자체가 main이랑 별도다.
+#따라서 이 설정파일은 test에만 적용된다.
+
 # Test
 spring:
   profiles:

@@ -111,7 +111,6 @@ public class StudyServiceTest {
     @Transactional
     public void 스터디를_생성하면_생성한_유저에게_스터디관리자_권한이_부여된다(){
         //given
-        //TODO : 테스트 코드 작성
         //when
         studyService.createStudy(studyCreateReq);
         //then
