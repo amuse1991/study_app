@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface StudyKeywordsRepository extends JpaRepository<StudyKeywords,Long> {
     List<StudyKeywords> findAllByStudyId(Long studyId);
+
+    // TODO : 테스트
+    boolean deleteAllByStudyId(Long studyId);
 }

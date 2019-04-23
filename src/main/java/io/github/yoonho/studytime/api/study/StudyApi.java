@@ -30,7 +30,6 @@ public class StudyApi {
 
     @GetMapping("/studies") // 스터디 검색
     public List<StudyInfoDto> searchStudy(
-            @RequestParam(value = "studyId", required = false)String studyId,
             @RequestParam(value = "name", required = false)String name,
             @RequestParam(value = "dayOfWeek", required = false)String dayOfWeek,
             @RequestParam(value = "time", required = false)String time,
@@ -44,31 +43,31 @@ public class StudyApi {
     // single item
 
     @GetMapping("/studies/{studyId}") // 스터디 정보 조회
-    public StudyInfoDto getStudyByStudyId(@PathVariable String studyId){
-        return null;
+    public StudyInfoDto getStudyByStudyId(@PathVariable Long studyId){
+        return studyService.getStudyByStudyId(studyId);
     }
 
     @PutMapping("/studies/{studyId}") // 스터디 정보 수정
-    public StudyInfoDto updateStudy(@PathVariable String studyId,
+    public StudyInfoDto updateStudy(@PathVariable Long studyId,
                                     @RequestBody UpdateStudyReqDto updateForm){
-        return null;
+        return studyService.updateStudy(studyId,updateForm);
     }
 
     @DeleteMapping("/studies/{studyId}") // 스터디 삭제
-    public String deleteStudy(@PathVariable String studyId){
-        return null;
+    public String deleteStudy(@PathVariable Long studyId){
+        return studyService.deleteStudy(studyId);
     }
 
     // member
     @PostMapping("/studies/{studyId}") // 스터디에 멤버 추가
-    public MembershipInfoDto addMember(@PathVariable String studyId,
+    public MembershipInfoDto addMember(@PathVariable Long studyId,
                                             @RequestBody String userId){
 
         return null;
     }
 
     @GetMapping("/studies/{studyId}/members") // 스터디 멤버 조회
-    public List<UserInfoResDto> getMembers(@PathVariable String studyId,
+    public List<UserInfoResDto> getMembers(@PathVariable Long studyId,
                                               @RequestParam(value = "userId",required = false) String userId,
                                               @RequestParam(value = "startAt",defaultValue = "0") int startAt,
                                               @RequestParam(value = "maxResult",defaultValue = "50") int maxResult,
@@ -79,8 +78,8 @@ public class StudyApi {
     }
 
     @DeleteMapping("/studies/{studyId}/members") // 스터디에서 멤버 제거
-    public UserInfoResDto removeUserFromStudy(@PathVariable String studyId,
-                                              @RequestParam String userName){
+    public UserInfoResDto removeUserFromStudy(@PathVariable Long studyId,
+                                              @RequestParam String userId){
         return null;
     }
 }

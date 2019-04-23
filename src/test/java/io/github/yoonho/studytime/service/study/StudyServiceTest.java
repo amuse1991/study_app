@@ -118,4 +118,18 @@ public class StudyServiceTest {
         MemberAuth auth = memberAuthRepository.getAuthByUserKey(user.getUserKey());
         assertThat(auth.getName(),is(MemberAuthType.manager.toString()));
     }
+
+    @Test
+    @Transactional
+    public void searchStudy에_인자가_없을경우_에러를_반환한다(){
+
+    }
+
+    @Test
+    @Transactional
+    public void searchStudy에_studyId가_인자로올경우_조회한_스터디객체를_반환한다(){
+
+    }
+
+
 }

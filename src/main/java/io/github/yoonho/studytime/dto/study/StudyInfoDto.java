@@ -1,6 +1,7 @@
 package io.github.yoonho.studytime.dto.study;
 
 import io.github.yoonho.studytime.utils.types.DayOfWeek;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,19 @@ public class StudyInfoDto {
     private String description;
     private boolean enabelAttendacne;
     private List<String> keywords;
+
+//    @Builder
+//    public StudyInfoDto(Long studyId, String name, DayOfWeek dayOfWeek,
+//                        Date time, int testPoint, String description, boolean enabelAttendacne, List<String> keywords){
+//        this.studyId = studyId;
+//        this.name = name;
+//        this.dayOfWeek = dayOfWeek;
+//        this.time = time;
+//        this.testPoint = testPoint;
+//        this.description = description;
+//        this.enabelAttendacne = enabelAttendacne;
+//        this.keywords = keywords;
+//    }
 
     @Override
     public String toString() {
